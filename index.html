@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hay Day Bio Link - Keren & Interaktif</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. SETTING DASAR & BACKGROUND --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #87ceeb; /* Warna Langit */
+            background-image: url('https://img.freepik.com/free-vector/farm-landscape-with-green-fields-meadows_107791-10519.jpg');
+            background-size: cover;
+            background-position: center bottom;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Quicksand', sans-serif;
+            padding: 40px 0;
+        }
+
+        /* --- 2. ANIMASI ELEMEN HAY DAY (AYAM & GANDUM) --- */
+        .hayday-item { position: fixed; pointer-events: none; z-index: 1; filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.2)); }
+        
+        .chicken { bottom: 20px; left: 5%; font-size: 50px; animation: hop 2s infinite ease-in-out; }
+        .wheat { bottom: -10px; right: 10%; font-size: 60px; color: #f1c40f; animation: sway 3s infinite ease-in-out; }
+
+        @keyframes hop { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        @keyframes sway { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(10deg); } }
+
+        /* --- 3. CONTAINER UTAMA --- */
+        .wrapper {
+            width: 90%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.2); /* Efek Transparan */
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 40px;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        /* --- 4. PROFILE SECTION --- */
+        .avatar-frame {
+            width: 120px; height: 120px; border-radius: 30px;
+            background: #8b4513; padding: 10px; display: inline-block;
+            box-shadow: 0 10px 0 #5d2e0d; border: 4px solid #f1c40f;
+            transform: rotate(-2deg); margin-bottom: 15px;
+        }
+        .profile-img { width: 100%; height: 100%; border-radius: 20px; object-fit: cover; }
+        
+        h1 { 
+            font-family: 'Fredoka One', cursive; 
+            color: #fff; 
+            text-shadow: 4px 4px 0px #8b4513; 
+            font-size: 2.2rem; 
+        }
+
+        /* --- 5. GALLERY FOTO (9:16) --- */
+        .gallery-title {
+            font-family: 'Fredoka One', cursive; color: #5d2e0d;
+            margin: 30px 0 15px; background: #f1c40f;
+            display: inline-block; padding: 8px 25px;
+            border-radius: 15px; box-shadow: 0 5px 0 #d4ac0d;
+        }
+        .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 30px; }
+        .photo-card {
+            background: #fff; padding: 6px; border-radius: 15px;
+            border: 3px solid #8b4513; box-shadow: 0 6px 0 #5d2e0d;
+            aspect-ratio: 9/16; overflow: hidden; transition: 0.3s;
+        }
+        .photo-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+        .photo-card:hover { transform: scale(1.05) rotate(3deg); z-index: 5; }
+
+        /* --- 6. TOMBOL LINK (WOOD STYLE) --- */
+        .links { display: flex; flex-direction: column; gap: 15px; }
+        .btn {
+            background: #cd853f; border: 4px solid #8b4513; border-bottom: 10px solid #5d2e0d;
+            padding: 18px; border-radius: 20px; text-decoration: none; color: #fff;
+            font-family: 'Fredoka One', cursive; font-size: 1.1rem;
+            display: flex; align-items: center; justify-content: center; gap: 12px; transition: 0.2s;
+        }
+        .btn:active { transform: translateY(6px); border-bottom-width: 4px; }
+        
+        /* Warna Khusus Saluran WA */
+        .btn-channel { background: #128C7E; border-color: #075E54; border-bottom-color: #043927; }
+
+        /* --- 7. ALL PAY QR CODE --- */
+        .qr-card {
+            margin-top: 40px; background: #fff8dc; padding: 25px;
+            border-radius: 30px; border: 5px dashed #cd853f; position: relative;
+        }
+        .qr-image { background: #fff; padding: 10px; border-radius: 15px; display: inline-block; }
+        .qr-image img { width: 160px; }
+        .price-tag {
+            position: absolute; top: -15px; right: -10px; background: #e74c3c;
+            color: white; padding: 8px 15px; border-radius: 15px;
+            font-family: 'Fredoka One', cursive; transform: rotate(15deg); box-shadow: 0 4px 0 #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hayday-item chicken">🐥</div>
+    <div class="hayday-item wheat">🌾</div>
+
+    <div class="wrapper">
+        
+        <div class="profile-section">
+            <div class="avatar-frame">
+                <img src="IMG-20260416-WA0301.jpg" alt="Avatar" class="profile-img">
+            </div>
+            <h1>RAJENDRA HD SHOP</h1>
+            <p style="color: #fff; text-shadow: 1px 1px 2px #000; font-weight: bold;">MOM FARM FAMILY</p>
+        </div>
+
+        <div class="gallery-title">📸 PRICELIST</div>
+        <div class="photo-grid">
+            <div class="photo-card"><img src="IMG-20260416-WA0304.jpg" alt="1"></div>
+            <div class="photo-card" style="transform: rotate(-2deg);"><img src="IMG-20260416-WA0307.jpg" alt="2"></div>
+            <div class="photo-card" style="transform: rotate(2deg);"><img src="IMG-20260416-WA0306.jpg" alt="3"></div>
+            <div class="photo-card"><img src="IMG-20260416-WA0302.jpg" alt="4"></div>
+        </div>
+
+        <div class="links">
+            <a href="https://whatsapp.com/channel/0029VbBiUXr6WaKnm0RW5641" class="btn btn-channel">
+                <i class="fas fa-bullhorn"></i> SALURAN WA
+            </a>
+            <a href="https://wa.me/6285745433213" class="btn">
+                <i class="fab fa-whatsapp"></i> WHATSAPP CHAT
+            </a>
+            <a href="https://www.instagram.com/rajendra_hd_shop?igsh=YTFrZmdnZzRsYW5i" class="btn">
+                <i class="fab fa-instagram"></i> INSTAGRAM
+            </a>
+            <a href="https://www.tiktok.com/@rajendrahdshop?_r=1&_t=ZS-95AaqJfwLM9" class="btn">
+                <i class="fab fa-tiktok"></i> TIKTOK
+            </a>
+            <a href="https://www.facebook.com/share/1BSt1f3bJv/" class="btn">
+                <i class="fab fa-facebook"></i> FACEBOOK
+            </a>
+        </div>
+
+        <div class="qr-card">
+            <div class="price-tag">PROMO!</div>
+            <div class="qr-image">
+                <img src="IMG-20260131-WA0015(1).jpg" alt="QRIS">
+            </div>
+            <div style="margin-top: 15px; font-weight: 800; color: #8b4513;">
+                <i class="fas fa-store"></i> TOKO PINGGIR JALAN
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
