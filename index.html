@@ -13,7 +13,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: #87ceeb; /* Warna Langit */
+            background: #87ceeb;
             background-image: url('https://img.freepik.com/free-vector/farm-landscape-with-green-fields-meadows_107791-10519.jpg');
             background-size: cover;
             background-position: center bottom;
@@ -26,9 +26,8 @@
             padding: 40px 0;
         }
 
-        /* --- 2. ANIMASI ELEMEN HAY DAY (AYAM & GANDUM) --- */
+        /* --- 2. ANIMASI ELEMEN HAY DAY --- */
         .hayday-item { position: fixed; pointer-events: none; z-index: 1; filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.2)); }
-        
         .chicken { bottom: 20px; left: 5%; font-size: 50px; animation: hop 2s infinite ease-in-out; }
         .wheat { bottom: -10px; right: 10%; font-size: 60px; color: #f1c40f; animation: sway 3s infinite ease-in-out; }
 
@@ -39,7 +38,7 @@
         .wrapper {
             width: 90%;
             max-width: 450px;
-            background: rgba(255, 255, 255, 0.2); /* Efek Transparan */
+            background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             padding: 30px;
             border-radius: 40px;
@@ -50,7 +49,6 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.2);
         }
 
-        /* --- 4. PROFILE SECTION --- */
         .avatar-frame {
             width: 120px; height: 120px; border-radius: 30px;
             background: #8b4513; padding: 10px; display: inline-block;
@@ -59,14 +57,9 @@
         }
         .profile-img { width: 100%; height: 100%; border-radius: 20px; object-fit: cover; }
         
-        h1 { 
-            font-family: 'Fredoka One', cursive; 
-            color: #fff; 
-            text-shadow: 4px 4px 0px #8b4513; 
-            font-size: 2.2rem; 
-        }
+        h1 { font-family: 'Fredoka One', cursive; color: #fff; text-shadow: 4px 4px 0px #8b4513; font-size: 2.2rem; }
 
-        /* --- 5. GALLERY FOTO (9:16) --- */
+        /* --- 4. GALLERY FOTO --- */
         .gallery-title {
             font-family: 'Fredoka One', cursive; color: #5d2e0d;
             margin: 30px 0 15px; background: #f1c40f;
@@ -78,11 +71,25 @@
             background: #fff; padding: 6px; border-radius: 15px;
             border: 3px solid #8b4513; box-shadow: 0 6px 0 #5d2e0d;
             aspect-ratio: 9/16; overflow: hidden; transition: 0.3s;
+            cursor: pointer; /* Memberi tanda bisa diklik */
         }
         .photo-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
         .photo-card:hover { transform: scale(1.05) rotate(3deg); z-index: 5; }
 
-        /* --- 6. TOMBOL LINK (WOOD STYLE) --- */
+        /* --- 5. MODAL (POPOUT FOTO) --- */
+        .modal {
+            display: none; position: fixed; z-index: 1000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center; align-items: center;
+        }
+        .modal-content { max-width: 90%; max-height: 80%; border: 5px solid #fff; border-radius: 15px; }
+        .close-modal {
+            position: absolute; top: 20px; right: 30px;
+            color: #fff; font-size: 40px; font-weight: bold; cursor: pointer;
+        }
+
+        /* --- 6. TOMBOL LINK --- */
         .links { display: flex; flex-direction: column; gap: 15px; }
         .btn {
             background: #cd853f; border: 4px solid #8b4513; border-bottom: 10px solid #5d2e0d;
@@ -91,16 +98,14 @@
             display: flex; align-items: center; justify-content: center; gap: 12px; transition: 0.2s;
         }
         .btn:active { transform: translateY(6px); border-bottom-width: 4px; }
-        
-        /* Warna Khusus Saluran WA */
         .btn-channel { background: #128C7E; border-color: #075E54; border-bottom-color: #043927; }
 
-        /* --- 7. ALL PAY QR CODE --- */
+        /* --- 7. QR CODE --- */
         .qr-card {
             margin-top: 40px; background: #fff8dc; padding: 25px;
             border-radius: 30px; border: 5px dashed #cd853f; position: relative;
         }
-        .qr-image { background: #fff; padding: 10px; border-radius: 15px; display: inline-block; }
+        .qr-image { background: #fff; padding: 10px; border-radius: 15px; display: inline-block; cursor: pointer; }
         .qr-image img { width: 160px; }
         .price-tag {
             position: absolute; top: -15px; right: -10px; background: #e74c3c;
@@ -114,8 +119,12 @@
     <div class="hayday-item chicken">🐥</div>
     <div class="hayday-item wheat">🌾</div>
 
+    <div id="myModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="imgFull">
+    </div>
+
     <div class="wrapper">
-        
         <div class="profile-section">
             <div class="avatar-frame">
                 <img src="IMG-20260416-WA0301.jpg" alt="Avatar" class="profile-img">
@@ -126,10 +135,10 @@
 
         <div class="gallery-title">📸 PRICELIST</div>
         <div class="photo-grid">
-            <div class="photo-card"><img src="IMG-20260416-WA0304.jpg" alt="1"></div>
-            <div class="photo-card" style="transform: rotate(-2deg);"><img src="IMG-20260416-WA0307.jpg" alt="2"></div>
-            <div class="photo-card" style="transform: rotate(2deg);"><img src="IMG-20260416-WA0306.jpg" alt="3"></div>
-            <div class="photo-card"><img src="IMG-20260416-WA0302.jpg" alt="4"></div>
+            <div class="photo-card"><img src="IMG-20260416-WA0304.jpg" class="zoomable" alt="Pricelist 1"></div>
+            <div class="photo-card" style="transform: rotate(-2deg);"><img src="IMG-20260416-WA0307.jpg" class="zoomable" alt="Pricelist 2"></div>
+            <div class="photo-card" style="transform: rotate(2deg);"><img src="IMG-20260416-WA0306.jpg" class="zoomable" alt="Pricelist 3"></div>
+            <div class="photo-card"><img src="IMG-20260416-WA0302.jpg" class="zoomable" alt="Pricelist 4"></div>
         </div>
 
         <div class="links">
@@ -153,14 +162,42 @@
         <div class="qr-card">
             <div class="price-tag">PROMO!</div>
             <div class="qr-image">
-                <img src="IMG-20260416-WA0302.jpg" alt="QRIS">
+                <img src="IMG-20260416-WA0302.jpg" class="zoomable" alt="QRIS">
             </div>
             <div style="margin-top: 15px; font-weight: 800; color: #8b4513;">
                 <i class="fas fa-store"></i> TOKO PINGGIR JALAN
             </div>
         </div>
-
     </div>
+
+    <script>
+        // Ambil elemen modal
+        const modal = document.getElementById("myModal");
+        const modalImg = document.getElementById("imgFull");
+        const closeBtn = document.querySelector(".close-modal");
+
+        // Ambil semua gambar dengan class 'zoomable'
+        const images = document.querySelectorAll('.zoomable');
+
+        images.forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+            }
+        });
+
+        // Klik tombol (x) untuk menutup
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Klik di mana saja di luar gambar untuk menutup
+        modal.onclick = function(e) {
+            if (e.target !== modalImg) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
